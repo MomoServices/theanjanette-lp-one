@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anjanettes Landing Page</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,7 +30,8 @@
     <div class="circle"></div>
     <header>
       <a href="#" class="logo"><img src="img/logo.png" alt="logo"></a>
-      <ul>
+      <div class="toggle" onclick="toggleMenu();"></div>
+      <ul class="navigation">
         <li><a href="#">Home</a></li>
         <li><a href="#">Women</a></li>
         <li><a href="#">Men's</a></li>
@@ -39,8 +41,33 @@
       </ul>
     </header>
     <div class="content">
-      <div class="textBox">
+      <div id="1" class="textBox">
         <h2> Sensor sensitive clothing<br>for <span>Every BODY</span></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        <a href="https://www.theanjanette.com/">Learn More</a>
+      </div>
+      <div id="2" style="display: none;" class="textBox">
+        <h2> <span>Fashion and Comfort</span><br>in mind</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        <a href="https://www.theanjanette.com/">Shop</a>
+      </div>
+      <div id="3" style="display: none;" class="textBox">
+        <h2> Rethink <br><span>Button Down Shirts</span></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        <a href="https://www.theanjanette.com/">Shop</a>
+      </div>
+      <div id="4" style="display: none;" class="textBox">
+        <h2>Every style catered <br>to <span>your</span>Body type</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        <a href="https://www.theanjanette.com/">Learn More</a>
+      </div>
+      <div id="5" style="display: none;" class="textBox">
+        <h2> Fashion with a <br> <span>Purpose</span></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        <a href="https://www.theanjanette.com/">Learn More</a>
+      </div>
+      <div id="6" style="display: none;" class="textBox">
+        <h2> Simple Fabric <br><span>Happy Mind</span></h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
         <a href="https://www.theanjanette.com/">Learn More</a>
       </div>
@@ -49,13 +76,14 @@
       </div>
     </div>
     <ul class="thumb">
-      <li><img src="img/img1.png" onclick="imgSlider('img/img1.png');changeCircleColor('#f6eee0')"></li>
-      <li><img src="img/thumb1.png" onclick="imgSlider('img/thumb1.png');changeCircleColor('#f8afa6')"></li>
-      <li><img src="img/thumb2.png" onclick="imgSlider('img/thumb2.png');changeCircleColor('#fadcd9')"></li>
-      <li><img src="img/thumb3.png" onclick="imgSlider('img/thumb3.png');changeCircleColor('#f9f1f0')"></li>
-      <li><img src="img/thumb4.png" onclick="imgSlider('img/thumb4.png');changeCircleColor('#fadcd9')"></li>
-      <li><img src="img/thumb5.png" onclick="imgSlider('img/thumb5.png');changeCircleColor('#f9f1f0')"></li>
+      <li><img src="img/img1.png" onclick="imgSlider('img/img1.png','1');changeCircleColor('#f6eee0')"></li>
+      <li><img src="img/thumb1.png" onclick="imgSlider('img/thumb1.png','2');changeCircleColor('#f8afa6')"></li>
+      <li><img src="img/thumb2.png" onclick="imgSlider('img/thumb2.png','3');changeCircleColor('#fadcd9')"></li>
+      <li><img src="img/thumb3.png" onclick="imgSlider('img/thumb3.png','4');changeCircleColor('#f9f1f0')"></li>
+      <li><img src="img/thumb4.png" onclick="imgSlider('img/thumb4.png','5');changeCircleColor('#fadcd9')"></li>
+      <li><img src="img/thumb5.png" onclick="imgSlider('img/thumb5.png','6');changeCircleColor('#f9f1f0')"></li>
     </ul>
+
     <ul class="social">
       <li><a href="#"><img src="img/facebook.png"></a></li>
       <li><a href="#"><img src="img/pinterest.png"></a></li>
@@ -64,13 +92,28 @@
   </section>
 
   <script type="text/javascript">
-    function imgSlider(anything){
-      document.querySelector('.anjanette').src = anything;
+  function imgSlider(anything,idtokeep){
+    document.querySelector('.anjanette').src = anything;
+    var boxes = document.querySelectorAll('.textBox');
+    for(var index = 0; index < boxes.length; index++){
+      var box = boxes[index];
+      if(box.id==idtokeep){
+       box.style.display="block";
+     } else {
+         box.style.display="none";
+     }
     }
-
+  }
     function changeCircleColor(color){
       const circle = document.querySelector('.circle');
       circle.style.background = color;
+    }
+
+    function toggleMenu(){
+      var menuToggle = document.querySelector('.toggle');
+      var navigation = document.querySelector('.navigation')
+      menuToggle.classList.toggle('active')
+      navigation.classList.toggle('active')
     }
   </script>
 
