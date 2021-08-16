@@ -95,6 +95,12 @@ textarea {
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
 section
 {
   position: relative;
@@ -191,13 +197,13 @@ header ul li a
 }
 .content .imgBox img
 {
-  max-width: 340px;
+  max-width: 440px;
 }
 .thumb
 {
   position: absolute;
   left: 50%;
-  bottom: 20px;
+  bottom: 15px;
   transform: translatex(-50%);
   display: flex;
 }
@@ -215,16 +221,17 @@ header ul li a
 }
 .thumb li img
 {
-  max-width: 60px;
+  max-width: 80px;
 }
 .social
 {
   position: absolute;
   top: 50%;
-  right: 30px;
+  right: 40px;
   transform: translateY(-50%);
   display: flex;
   justify-content: center;
+  list-style-type: none;
   align-items: center;
   flex-direction: column;
 }
@@ -247,7 +254,7 @@ header ul li a
   width: 100%;
   height: 100%;
   background: #f6eee0;
-  clip-path: circle(600px at right 800px);
+  clip-path: circle(800px at right 800px);
 }
 
 /* Responsive */
